@@ -24,12 +24,12 @@ public class AvroTweetProducer  {
 		Producer<String, TwitterStatusUpdate> producer = null;
     	
 		Properties props = new Properties();
-	    props.put("bootstrap.servers", "192.168.69.135:9092");
+	    props.put("bootstrap.servers", "192.168.2.30:9092");
 	    props.put("acks", "all");
 	    props.put("retries", 0);
 	    props.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
 	    props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
-	    props.put("schema.registry.url", "http://192.168.69.135:8081");
+	    props.put("schema.registry.url", "http://192.168.2.30:8081");
 
 		try {
     		producer = new KafkaProducer<String, TwitterStatusUpdate>(props);
