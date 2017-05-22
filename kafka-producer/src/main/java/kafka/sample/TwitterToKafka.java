@@ -193,8 +193,8 @@ public class TwitterToKafka  {
 		followTerms.add("#nosql");
 
 		// Twitter Authentication
-		String consumerKey = "onkCvrkwhRGOqbTubDLZFQOuF";
-		String consumerSecret = "LUNinZIK9ytAKjB3CLYdiO4RwVMQSMufw7cHfiUz65EEPsSBCL";
+		String consumerKey = "TRbhBcCp8QesXqcIDQMMGwk01";
+		String consumerSecret = "VlBjyWyQK5XgQJpHXUIvTkRHlRZYSwuIbTs1UO3GGmEJleG2Aw";
 		String accessToken = "18898576-kKEEFsiwiDDt3n4uSqSMu8yd2Tbaarxyemc83alC2";
 		String accessTokenSecret = "eBYm8gRCZgUvpW4jcuYZcji9BRMYMVleKrUSLrpKwpakX";
 		
