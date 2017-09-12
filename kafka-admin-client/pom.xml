@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>storm.blueprints</groupId>
-	<artifactId>kafka-producer</artifactId>
+	<groupId>com.trivadis.kafka.sample</groupId>
+	<artifactId>kafka-admin-client</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Kafka producer</name>
+	<name>Kafka Admin Client Demo</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,49 +30,19 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<dependencies>
-		<dependency>
-			<groupId>com.twitter</groupId>
-			<artifactId>hbc-core</artifactId>
-			<version>2.2.0</version>
-		</dependency>
 
-		<dependency>
-			<groupId>com.twitter</groupId>
-			<artifactId>hbc-twitter4j</artifactId>
-			<version>2.2.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.twitter4j</groupId>
-			<artifactId>twitter4j-core</artifactId>
-			<version>4.0.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.twitter4j</groupId>
-			<artifactId>twitter4j-stream</artifactId>
-			<version>4.0.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.confluent</groupId>
-			<artifactId>kafka-avro-serializer</artifactId>
-			<version>${confluent.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka-clients</artifactId>
 			<version>${kafka.version}</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.apache.avro</groupId>
-			<artifactId>avro</artifactId>
-			<version>${avro.version}</version>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.11</artifactId>
+			<version>${kafka.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.avro</groupId>
-			<artifactId>avro-maven-plugin</artifactId>
-			<version>${avro.version}</version>
-		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -83,25 +53,7 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.avro</groupId>
-				<artifactId>avro-maven-plugin</artifactId>
-				<version>${avro.version}</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>schema</goal>
-							<goal>protocol</goal>
-							<goal>idl-protocol</goal>
-						</goals>
-						<configuration>
-							<fieldVisibility>private</fieldVisibility>
-							<sourceDirectory>${project.basedir}/src/main/resources/avro</sourceDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
@@ -150,23 +102,7 @@
 					</arguments>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>io.confluent</groupId>
-				<artifactId>kafka-schema-registry-maven-plugin</artifactId>
-				<version>3.2.0</version>
-				<configuration>
-					<schemaRegistryUrls>
-						<param>http://192.168.69.135:8081</param>
-					</schemaRegistryUrls>
-					<subjects>
-						<tweet-value>src/main/resources/avro/TwitterSchema.avsc</tweet-value>
-					</subjects>
-				</configuration>
-				<goals>
-					<goal>register</goal>
-					<goal>test-compatibility</goal>
-				</goals>
-			</plugin>
+
 		</plugins>
 	</build>
 </project>

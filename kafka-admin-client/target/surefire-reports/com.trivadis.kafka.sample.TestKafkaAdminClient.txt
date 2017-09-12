@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: com.trivadis.kafka.sample.TestKafkaAdminClient
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 15.482 sec <<< FAILURE! - in com.trivadis.kafka.sample.TestKafkaAdminClient
+testNames(com.trivadis.kafka.sample.TestKafkaAdminClient)  Time elapsed: 5.308 sec  <<< ERROR!
+java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.TimeoutException: Timed out waiting to send the call.
+	at org.apache.kafka.common.internals.KafkaFutureImpl.wrapAndThrow(KafkaFutureImpl.java:45)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.access$000(KafkaFutureImpl.java:32)
+	at org.apache.kafka.common.internals.KafkaFutureImpl$SingleWaiter.await(KafkaFutureImpl.java:89)
+	at org.apache.kafka.common.internals.KafkaFutureImpl.get(KafkaFutureImpl.java:213)
+	at com.trivadis.kafka.sample.TestKafkaAdminClient.testNames(TestKafkaAdminClient.java:34)
+Caused by: org.apache.kafka.common.errors.TimeoutException: Timed out waiting to send the call.
+

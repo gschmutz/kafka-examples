@@ -191,6 +191,8 @@ public class TwitterToKafka  {
 		List<String> followTerms = new ArrayList<String>();
 		followTerms.add("#bigdata");
 		followTerms.add("#nosql");
+		followTerms.add("#cloud");
+		followTerms.add("#iot");
 
 		// Twitter Authentication
 		String consumerKey = "TRbhBcCp8QesXqcIDQMMGwk01";

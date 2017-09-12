@@ -4,11 +4,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
+import java.util.concurrent.Future;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-
+import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.avro.io.DatumWriter;
 import org.apache.avro.io.Encoder;
 import org.apache.avro.io.EncoderFactory;
@@ -24,12 +25,12 @@ public class AvroTweetProducer  {
 		Producer<String, TwitterStatusUpdate> producer = null;
     	
 		Properties props = new Properties();
-	    props.put("bootstrap.servers", "192.168.2.30:9092");
+	    props.put("bootstrap.servers", "192.168.69.154:19092");
 	    props.put("acks", "all");
 	    props.put("retries", 0);
 	    props.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
 	    props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
-	    props.put("schema.registry.url", "http://192.168.2.30:8081");
+	    props.put("schema.registry.url", "http://192.168.69.154:8081");
 
 		try {
     		producer = new KafkaProducer<String, TwitterStatusUpdate>(props);
@@ -63,9 +64,10 @@ public class AvroTweetProducer  {
 
         if (producer !=null) {
         	try {
-//            	System.out.println("Sending to Kafka " + status.getCreatedAt() + "/" + status.getTweetId());
-                producer.send(record);
+        		Future<RecordMetadata> future = producer.send(record);
+        		RecordMetadata metadata = future.get();
         	} catch (Exception e) {
+        		System.err.println(e.getMessage());
         		e.printStackTrace();
         	}
         	
