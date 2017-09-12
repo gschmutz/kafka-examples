@@ -25,7 +25,7 @@ public class AvroTweetProducer  {
 		Producer<String, TwitterStatusUpdate> producer = null;
     	
 		Properties props = new Properties();
-	    props.put("bootstrap.servers", "192.168.69.154:19092");
+	    props.put("bootstrap.servers", "192.168.69.154:9092");
 	    props.put("acks", "all");
 	    props.put("retries", 0);
 	    props.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
